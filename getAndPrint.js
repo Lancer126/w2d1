@@ -4,21 +4,25 @@ getAndPrintHTML();
 
 function getAndPrintHTML () {
 
+  var requestOptions = {
+    host: 'sytantris.github.io',
+    path: '/http-examples/step2.html'
+  };
+
   var callback = function(response) {
     var output = "";
     console.log('In response handler callback!');
 
     response.on('data', function(chunk) {
-      output += chunk.toString();
+      console.log(chunk);
+      output += chunk;
     });
     console.log(output);
+    response.on("end", function () {
+      console.log(output)
+    });
   }
 
-  var requestOptions = {
-    host: 'sytantris.github.io',
-    path: '/http-examples/step1.html'
-  };
-
-  https.request(requestOptions, callback).end();
+  https.get(requestOptions, callback);
 
 }

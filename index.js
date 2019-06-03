@@ -6,7 +6,6 @@ function getAndPrintHTMLChunks () {
     console.log('In response handler callback!');
 
     response.on('data', function(chunk) {
-      console.log('[-- CHUNK OF LENGTH ' + chunk.length + ' --]');
       console.log(chunk.toString());
     });
   }
@@ -16,8 +15,5 @@ function getAndPrintHTMLChunks () {
     path: '/http-examples/step1.html'
   };
 
-  https.request(requestOptions, callback).end();
-
-
-
+  https.get(requestOptions, callback).end();
 }
