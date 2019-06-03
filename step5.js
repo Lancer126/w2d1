@@ -1,4 +1,5 @@
 var https = require('https');
+var getHTML = require('./http-functions');
 var options = process.argv.slice(2);
 
 function callb (response) {
@@ -10,16 +11,6 @@ function callb (response) {
     printHTML (output);
     return output;
   });
-}
-
-function getHTML (options, callback) {
-
-  var requestOptions = {
-    host: options[0].toString(),
-    path: options[1].toString()
-  };
-
-  https.get(requestOptions, callback);
 }
 
 function printHTML (html) {
