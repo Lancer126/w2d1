@@ -3,7 +3,6 @@ var https = require('https');
 function getAndPrintHTMLChunks () {
 
   var callback = function(response) {
-    console.log('In response handler callback!');
 
     response.on('data', function(chunk) {
       console.log(chunk.toString());

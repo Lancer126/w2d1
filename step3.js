@@ -1,12 +1,13 @@
 var https = require('https');
+var options = process.argv.slice(2);
 
-getAndPrintHTML();
+getAndPrintHTML(options);
 
-function getAndPrintHTML () {
+function getAndPrintHTML (options) {
 
   var requestOptions = {
-    host: 'sytantris.github.io',
-    path: '/http-examples/step2.html'
+    host: options[0].toString(),
+    path: options[1].toString()
   };
 
   var callback = function(response) {
